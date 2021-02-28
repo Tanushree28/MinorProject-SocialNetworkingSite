@@ -48,14 +48,14 @@ if(isset($_POST["resend"]))
 					require 'class/class.phpmailer.php';
 					$mail = new PHPMailer;
 					//$mail->IsSMTP();
-					$mail->Host = 'smtp.hostinger.com';
+					$mail->Host = ' smtp.gmail.com';
 					$mail->Port = '80';
 					$mail->SMTPAuth = true;
-					$mail->Username = 'xxxxxxxx';
-					$mail->Password = 'xxxxxxxxxx';
+					$mail->Username =  'pathika.nepal@gmail.com';
+					$mail->Password = 'ilovenepal';
 					$mail->SMTPSecure = '';
-					$mail->From = 'tanu.nepal1@gmail.com';
-					$mail->FromName = 'Tanushree';
+					$mail->From = 'pathika.nepal@gmail.com';
+					$mail->FromName = 'Pathika Team';
 					$mail->AddAddress($row["user_email"]);
 					$mail->WordWrap = 50;
 					$mail->IsHTML(true);
@@ -63,7 +63,7 @@ if(isset($_POST["resend"]))
 					$message_body = '
 					<p>For verify your email address, enter this verification code when prompted: <b>'.$row["user_otp"].'</b>.</p>
 					<p>Sincerely,</p>
-					<p>Tanushree</p>
+					<p>Pathika Team</p>
 					';
 					$mail->Body = $message_body;
 
@@ -91,7 +91,7 @@ if(isset($_POST["resend"]))
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Resend Email Verification OTP in PHP Registration</title>
+		<title>Resend Email Verification |  Pāthika</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script src="asset/js/jquery.js"></script>
     	<script src="asset/js/bootstrap.min.js"></script>
@@ -100,7 +100,7 @@ if(isset($_POST["resend"]))
 	<body>
 		<br />
 		<div class="container">
-			<h3 align="center">Resend Email Verification OTP in PHP Registration</h3>
+			<h3 align="center">Resend Email Verification OTP </h3>
 			<br />
 			<div class="panel panel-default">
 				<div class="panel-heading">

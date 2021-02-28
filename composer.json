@@ -1,0 +1,6 @@
+{
+    "name": "tanushree/pro",
+    "require": {
+        "phpmailer/phpmailer": "^6.3"
+    }
+}

@@ -56,39 +56,27 @@ if(isset($_POST["submit"]))
 
 					$connect->query($sub_query);
 
-					require 'class/class.phpmailer.php';
+                    require 'class/class.phpmailer.php';
+			       $mail = new PHPMailer;
+			       //$mail->IsSMTP();
+			       $mail->Host = ' smtp.gmail.com';
+			       $mail->Port = '80';
+			       $mail->SMTPAuth = true;
+			       $mail->Username = 'pathika.nepal@gmail.com';
+			       $mail->Password = 'ilovenepal';
+			       $mail->SMTPSecure = '';
+			       $mail->From = 'pathika.nepal@gmail.com';
+			       $mail->FromName = 'Pathika Team';
+				   $mail->AddAddress($row["user_email"]);
+			       $mail->WordWrap = 50;
+			       $mail->IsHTML(true);
+			       $mail->Subject = 'Verification code for Verify Your Email Address';
 
-					$mail = new PHPMailer;
-
-					//$mail->IsSMTP();
-
-					$mail->Host = 'smtp.hostinger.com';
-
-					$mail->Port = '80';
-
-					$mail->SMTPAuth = true;
-
-					$mail->Username = 'xxxxxxx';
-
-					$mail->Password = 'xxxxxxx';
-
-					$mail->SMTPSecure = '';
-
-					$mail->From = 'tanu.nepal1@gmail.com';
-
-					$mail->FromName = 'Tanushree';
-
-					$mail->AddAddress($row["user_email"]);
-
-					$mail->IsHTML(true);
-
-					$mail->Subject = 'Password reset request for your account';
-
-					$message_body = '
-					<p>For reset your password, you have to enter this verification code when prompted: <b>'.$user_otp.'</b>.</p>
-					<p>Sincerely,</p>
-					<p>Tanushree</p>
-					';
+			       $message_body = '
+			          <p>For verify your email address, enter this verification code when prompted: <b>'.$user_otp.'</b>.</p>
+			          <p>Sincerely,</p>
+			           <p>Pathika Team</p>
+					   ';
 
 					$mail->Body = $message_body;
 
@@ -170,7 +158,7 @@ if(isset($_POST["change_password"]))
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Forgot Password script in PHP using OTP</title>
+		<title>Forgot Password | Pāthika</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script src="asset/js/jquery.js"></script>
     	<script src="asset/js/bootstrap.min.js"></script>
@@ -179,11 +167,11 @@ if(isset($_POST["change_password"]))
 	<body>
 		<br />
 		<div class="container">
-			<h3 align="center">Forgot Password script in PHP using OTP</h3>
+			<h3 align="center">Forgot Password </h3>
 			<br />
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title">Forgot Password script in PHP using OTP</h3>
+					<h3 class="panel-title">Forgot Password, Let's Change i</h3>
 				</div>
 				<div class="panel-body">
 					<?php

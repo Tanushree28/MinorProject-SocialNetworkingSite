@@ -1,11 +1,48 @@
 <?php
 
+$connect =mysqli_connect("localhost","root","","testing");
+require_once "./email_send.php";
+
+
+
+
 session_start();
 
 if(isset($_SESSION["user_id"]))
 {
 	header("location:home.php");
 }
+
+
+
+if(!empty($_POST)){
+	$email=$_POST['user_email'];
+	 $password=md5($_POST['user_password']);
+
+	$query = "SELECT * FROM register_user WHERE user_email='$email' AND  user_password='$password'";
+	$data=	mysqli_query($connect,$query);
+
+	$totalUsers=mysqli_num_rows($data);
+
+	if($totalUsers>0){
+		$opt=uniqid();
+
+			
+	if(mail_send($email,'test','your code is'.$opt)){
+		// insert into tbl_logn (otp)
+		header("Location:login_verify.php");
+	}else{
+		echo "error";
+	}
+	
+	}else{
+		echo "username & password not match";
+	}
+
+
+
+}
+
 
 ?>
 
@@ -58,19 +95,13 @@ if(isset($_SESSION["user_id"]))
 									<input type="text" name="user_email" id="user_email" class="form-control" />
 									<span id="user_email_error" class="text-danger"></span>
 								</div>
-								<div class="form-group" id="password_area" style="display:none;">
+								<div class="form-group" id="password_area">
 									<label>Enter password</label>
 									<input type="password" name="user_password" id="user_password" class="form-control" />
 									<span id="user_password_error" class="text-danger"></span>
 								</div>
-								<div class="form-group" id="otp_area" style="display:none;">
-									<label>Enter OTP Number</label>
-									<input type="text" name="user_otp" id="user_otp" class="form-control" />
-									<span id="user_otp_error" class="text-danger"></span>
-								</div>
-								<div class="form-group" align="right">
-									<input type="hidden" name="action" id="action" value="email" />
-									<input type="submit" name="next" id="next" class="btn btn-primary" value="Next" />
+								<div class="form-group">
+								<button>Login</button>
 								</div>
 							</form>
 						</div>
@@ -89,64 +120,64 @@ if(isset($_SESSION["user_id"]))
 
 <script>
 
-$(document).ready(function(){
-	$('#login_form').on('submit', function(event){
-		event.preventDefault();
-		var action = $('#action').val();
-		$.ajax({
-			url:"login_verify.php",
-			method:"POST",
-			data:$(this).serialize(),
-			dataType:"json",
-			beforeSend:function()
-			{
-				$('#next').attr('disabled', 'disabled');
-			},
-			success:function(data)
-			{
-				$('#next').attr('disabled', false);
-				if(action == 'email')
-				{
-					if(data.error != '')
-					{
-						$('#user_email_error').text(data.error);
-					}
-					else
-					{
-						$('#user_email_error').text('');
-						$('#email_area').css('display', 'none');
-						$('#password_area').css('display', 'block');
-					}
-				}
-				else if(action == 'password')
-				{
-					if(data.error != '')
-					{
-						$('#user_password_error').text(data.error);
-					}
-					else
-					{
-						$('#user_password_error').text('');
-						$('#password_area').css('display', 'none');
-						$('#otp_area').css('display', 'block');
-					}
-				}
-				else
-				{
-					if(data.error != '')
-					{
-						$('#user_otp_error').text(data.error);
-					}
-					else
-					{
-						window.location.replace("home.php");
-					}
-				}
+// $(document).ready(function(){
+// 	$('#login_form').on('submit', function(event){
+// 		event.preventDefault();
+// 		var action = $('#action').val();
+// 		$.ajax({
+// 			url:"login_verify.php",
+// 			method:"POST",
+// 			data:$(this).serialize(),
+// 			dataType:"json",
+// 			beforeSend:function()
+// 			{
+// 				$('#next').attr('disabled', 'disabled');
+// 			},
+// 			success:function(data)
+// 			{
+// 				$('#next').attr('disabled', false);
+// 				if(action == 'email')
+// 				{
+// 					if(data.error != '')
+// 					{
+// 						$('#user_email_error').text(data.error);
+// 					}
+// 					else
+// 					{
+// 						$('#user_email_error').text('');
+// 						$('#email_area').css('display', 'none');
+// 						$('#password_area').css('display', 'block');
+// 					}
+// 				}
+// 				else if(action == 'password')
+// 				{
+// 					if(data.error != '')
+// 					{
+// 						$('#user_password_error').text(data.error);
+// 					}
+// 					else
+// 					{
+// 						$('#user_password_error').text('');
+// 						$('#password_area').css('display', 'none');
+// 						$('#otp_area').css('display', 'block');
+// 					}
+// 				}
+// 				else
+// 				{
+// 					if(data.error != '')
+// 					{
+// 						$('#user_otp_error').text(data.error);
+// 					}
+// 					else
+// 					{
+// 						window.location.replace("home.php");
+// 					}
+// 				}
 
-				$('#action').val(data.next_action);
-			}
-		})
-	});
-});
+// 				$('#action').val(data.next_action);
+// 			}
+// 		})
+// 	});
+// });
 
-</script>
+// </script>

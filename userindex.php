@@ -1,5 +1,5 @@
 <?php
-
+require_once "./email_send.php";
 //userindex.php
 
 //error_reporting(E_ALL);
@@ -55,7 +55,7 @@ if(isset($_POST["register"]))
 	else
 	{
 		$user_password = trim($_POST["user_password"]);
-		$user_password = password_hash($user_password, PASSWORD_DEFAULT);
+		$user_password = md5($user_password);
 	}
 
 	if($error_user_name == '' && $error_user_email == '' && $error_user_password == '')
@@ -108,40 +108,16 @@ if(isset($_POST["register"]))
 			
 			//echo ("hi");
 
+			
 
-			require 'class/class.phpmailer.php';
-			$mail = new PHPMailer;
-			//$mail->IsSMTP();
-			$mail->Host = 'smtp.hostinger.com';
-			$mail->Port = '80';
-			$mail->SMTPAuth = true;
-			$mail->Username = 'xxxxx';
-			$mail->Password = 'xxxxx';
-			$mail->SMTPSecure = '';
-			$mail->From = 'tanu.nepal1@gmail.com';
-			$mail->FromName = 'Tanushree';
-			$mail->AddAddress($user_email);
-			$mail->WordWrap = 50;
-			$mail->IsHTML(true);
-			$mail->Subject = 'Verification code for Verify Your Email Address';
-
-			$message_body = '
-			<p>For verify your email address, enter this verification code when prompted: <b>'.$user_otp.'</b>.</p>
-			<p>Sincerely,</p>
-			<p>Tanushree</p>
-			';
-			$mail->Body = $message_body;
-
-			if($mail->Send())
-			{
-				echo '<script>alert("Please Check Your Email for Verification Code")</script>';
-
-				header('location:email_verify.php?code='.$user_activation_code);
+			if(mail_send($user_email,"check","your code is  ".$user_otp)){
+				echo "check your email address";
+			}else{
+				echo "not send";
 			}
-			else
-			{
-				$message = $mail->ErrorInfo;
-			}
+
+
+		
 		}
 
 	}

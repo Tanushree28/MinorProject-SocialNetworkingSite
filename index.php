@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="bootstrap/css/mdb.css">
     <link rel="stylesheet" href="bootstrap/css/style.css">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+   
    
     <title> Pāthika</title>
 </head>
@@ -264,6 +266,8 @@
         </div>
     </section>
 
+
+
 <!-- CHAT-->
             
 
@@ -369,6 +373,8 @@
         interval : 3000,
         pause : 'hover'
     });
+
+
 </script>
 </body>
 </html>

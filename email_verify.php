@@ -72,7 +72,7 @@ else
 	<body>
 		<br />
 		<div class="container">
-			<h3 align="center">Resend Email Verification OTP in PHP Registration</h3>
+			<h3 align="center">Resend Email Verification OTP</h3>
 			<br />
 			<div class="panel panel-default">
 				<div class="panel-heading">
