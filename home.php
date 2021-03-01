@@ -69,7 +69,7 @@ include('header.php');
 							<div id="content_area" contenteditable="true" placeholder="Write Something...."></div>
 						</div>
 						<div class="panel-footer" align="right">
-							<button type="button" name="share_button" id="share_button" class="btn btn-primary btn-sm">Post</button>
+							<button type="button" name="share_button" id="share_button" value="create" class="btn btn-primary btn-sm">Post</button>
 						</div>
 					</div>
 					<br />

@@ -80,7 +80,7 @@ if(isset($_POST["edit"]))
 
 			$statement->execute($data);
 
-			header("location:profile.php?action=view&success=1");
+			header("location:home.php?action=view&success=1");
 		}
 	}
 }

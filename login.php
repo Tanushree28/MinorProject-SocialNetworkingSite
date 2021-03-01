@@ -28,7 +28,7 @@ if(!empty($_POST)){
 		$opt=uniqid();
 
 			
-	if(mail_send($email,'test','your code is'.$opt)){
+	if(mail_send($email,'Verify Code','For verify your email address, enter this verification code when prompted:'.$opt)){
 		// insert into tbl_logn (otp)
 		header("Location:login_verify.php");
 	}else{

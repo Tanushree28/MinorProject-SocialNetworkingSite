@@ -171,7 +171,7 @@ if(isset($_POST["change_password"]))
 			<br />
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title">Forgot Password, Let's Change i</h3>
+					<h3 class="panel-title">Forgot Password, Let's Change</h3>
 				</div>
 				<div class="panel-body">
 					<?php

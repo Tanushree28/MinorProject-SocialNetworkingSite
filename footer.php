@@ -175,7 +175,7 @@ $(document).ready(function(){
     $('#share_button').click(function(){
         var content = $('#content_area').html();
 
-        var action = $('#share_button').data('action');
+        var action = $("#share_button").attr("value");
 
         var post_id = $('#share_button').data('post_id');
 

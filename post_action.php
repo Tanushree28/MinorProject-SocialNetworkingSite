@@ -12,7 +12,7 @@ if(isset($_POST["action"]))
 {
 	if($_POST['action'] == 'create')
 	{
-		sleep(5);
+		// sleep(5);
 		$data = array(
 			':user_id'		=>	$_SESSION["user_id"],
 			':post_content'	=>	clean_text($_POST["content"]),

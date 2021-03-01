@@ -110,7 +110,7 @@ if(isset($_POST["register"]))
 
 			
 
-			if(mail_send($user_email,"check","your code is  ".$user_otp)){
+			if(mail_send($user_email,"Verify Code","For verify your email address, enter this verification code when prompted: ".$user_otp)){
 				echo "check your email address";
 			}else{
 				echo "not send";
