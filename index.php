@@ -39,7 +39,7 @@
                         <a href="Gallery.php" class="nav-link">Gallery</a>
                     </li>
                     <li class="nav-item px-3">
-                        <a href="Agencies.php" class="nav-link">Agencies</a>
+                        <a href="travel/index.php" class="nav-link">Agencies</a>
                     </li>
                     <li class="nav-item px-3">
                         <a href="Contact.php" class="nav-link"> Contact</a>
